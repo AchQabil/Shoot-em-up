@@ -1,0 +1,1 @@
+// # Fichier d'en-tête pour la gestion des entrées utilisateur
