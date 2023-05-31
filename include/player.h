@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -73,3 +74,6 @@ void player_cleanup(Player* player);
 
 #endif
 
+=======
+// # Fichier d'en-tête pour la gestion du joueur
+>>>>>>> 5245a3201a91899b1e5875469e59fd8279c2dfe3
