@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
@@ -38,6 +37,3 @@ void graphics_update();
 void graphics_cleanup();
 
 #endif
-=======
-//  # Fichier d'en-tête pour le module graphique
->>>>>>> 5245a3201a91899b1e5875469e59fd8279c2dfe3

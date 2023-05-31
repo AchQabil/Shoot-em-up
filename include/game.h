@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef GAME_H
 #define GAME_H
 
@@ -63,6 +62,3 @@ void handle_input_game(Game *game, bool *quit);
 void clean_game(Game *game);
 
 #endif
-=======
-// # Fichier d'en-tête pour le module de jeu
->>>>>>> 5245a3201a91899b1e5875469e59fd8279c2dfe3
