@@ -4,7 +4,6 @@
 #include "include/stars.h"
 
 #include "include/collision.h"
-#include <MLV/MLV_window.h>
 #include <stdbool.h>
 
 #define FRAME_TIME (1.0 / 48.0) // Durée cible d'une frame en secondes
@@ -28,9 +27,15 @@ int main() {
     graphics_clear();
     draw_game(&game);
     graphics_update();
+    
+    // Résoudre les événements
+    handle_input_game(&game, &quit);
 
     // Mouvements des entités sur le plateau
     update_game(&game);
+    
+     // Résolutions des collisions
+    game_handle_collision(&game);
 
     // Récupérer le temps à la fin de la frame
     new_time = MLV_get_time();
@@ -51,7 +56,8 @@ int main() {
 
     star_creation_counter++;
   }
-
+  
+  // Nettoyer et fermer la fenêtre graphique
   clean_game(&game);
 
   return 0;
