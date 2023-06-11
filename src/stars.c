@@ -1,51 +1,50 @@
-#include <MLV/MLV_all.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 
 #include "../include/stars.h"
-
 #include "../include/game.h"
 
 void stars_init(Stars *stars)
 {
   for (int i = 0; i < MAX_STARS; i++)
   {
+    stars->x[i] = 0;
+    stars->y[i] = 0;
+    stars->speed[i] = 0;
     stars->active[i] = 0;
     stars->image[i] = NULL;
   }
 }
 
+
 void stars_create_star(Stars *stars, int num_stars)
 {
-  for (int i = 0; i < num_stars; i++)
-  {
-    int index = -1;
-    for (int j = 0; j < MAX_STARS; j++)
-    {
-      if (!stars->active[j])
-      {
-        index = j;
-        break;
-      }
-    }
+  int created_stars = 0;
 
-    if (index != -1)
+  for (int j = 0; j < MAX_STARS; j++)
+  {
+    if (!stars->active[j])
     {
-      if (stars->image[index] == NULL)
+      if (stars->image[j] == NULL)
       {
-        stars->image[index] = MLV_load_image("data/img/star.png");
-        if (stars->image[index] == NULL)
+        stars->image[j] = MLV_load_image("data/img/star.png");
+        if (stars->image[j] == NULL)
         {
           printf("Erreur lors du chargement de l'image\n ");
           exit(1);
         }
-        MLV_resize_image_with_proportions(stars->image[index], STAR_WIDTH, STAR_HEIGHT);
+        MLV_resize_image_with_proportions(stars->image[j], STAR_WIDTH, STAR_HEIGHT);
       }
 
-      stars->active[index] = 1;
-      stars->x[index] = rand() % WIDTH;
-      stars->y[index] = 0;
-      stars->speed[index] = rand() % 4 + 2;
+      stars->active[j] = 1;
+      stars->x[j] = rand() % WIDTH;
+      stars->y[j] = 0;
+      stars->speed[j] = rand() % 4 + 2;
+
+      created_stars++;
+      if (created_stars >= num_stars)
+      {
+        break;
+      }
     }
   }
 }

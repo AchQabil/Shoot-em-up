@@ -1,17 +1,24 @@
 CC = gcc
 CFLAGS = -Wall -std=c17
 LDFLAGS = -lMLV -lm
-EXEC = shoot_em_up
+EXEC = bin/shoot_em_up main.o
 
-SRC = main.c src/game.c src/graphics.c src/collision.c src/enemy.c src/player.c src/bullet.c  src/stars.c
+# Liste des fichiers sources
+SRC = main.c src/game.c src/collision.c src/player.c src/bullet.c src/stars.c  src/explosion.c src/menu.c
+OBJ = $(SRC:src/%.c=bin/%.o)
 
-OBJ = $(SRC:.c=.o)
+# Règle pour la création du dossier bin
+$(shell mkdir -p bin)
 
-%.o: %.c
-	$(CC) -c $< $(CFLAGS) -I../include -o $@
+# Règle pour la compilation des fichiers objets
+bin/%.o: src/%.c
+	$(CC) -c $< $(CFLAGS) -Iinclude -o $@
 
+# Règle pour la création de l'exécutable
 $(EXEC): $(OBJ)
-	$(CC) $(OBJ) $(LDFLAGS) -o $@ 
+	$(CC) $(OBJ) $(LDFLAGS) -o $@
 
+# Règle pour nettoyer les fichiers objets, en excluant main.c
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(filter-out main.c, $(OBJ))  $(EXEC)
+
