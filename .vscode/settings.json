@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "stdbool.h": "c",
+        "stars.h": "c",
+        "explosion.h": "c",
+        "mlv_all.h": "c",
+        "game.h": "c",
+        "collision.h": "c",
+        "time.h": "c",
+        "stdio.h": "c",
+        "mlv_mouse.h": "c",
+        "graphics.h": "c",
+        "enemy.h": "c",
+        "menu.h": "c"
+    }
+}
